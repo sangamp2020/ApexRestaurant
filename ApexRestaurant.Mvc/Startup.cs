@@ -33,7 +33,13 @@ namespace ApexRestaurant.Mvc
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-           services.AddRazorPages();
+            services.AddRazorPages();
+
+            services.AddHttpClient();
+        //    services.AddHttpClient("API Client", client => {
+        //         client.BaseAddress = new Uri("https://www.metaweather.com/");
+        //         client.DefaultRequestHeaders.Add("Accept", "application/json");
+        //     });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
