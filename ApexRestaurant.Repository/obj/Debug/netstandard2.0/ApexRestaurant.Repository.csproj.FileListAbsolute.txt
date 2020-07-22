@@ -6,3 +6,4 @@ D:\ApexRestaurant\ApexRestaurant.Repository\obj\Debug\netstandard2.0\ApexRestaur
 D:\ApexRestaurant\ApexRestaurant.Repository\obj\Debug\netstandard2.0\ApexRestaurant.Repository.AssemblyInfo.cs
 D:\ApexRestaurant\ApexRestaurant.Repository\obj\Debug\netstandard2.0\ApexRestaurant.Repository.dll
 D:\ApexRestaurant\ApexRestaurant.Repository\obj\Debug\netstandard2.0\ApexRestaurant.Repository.pdb
+D:\ApexRestaurant\ApexRestaurant.Repository\obj\Debug\netstandard2.0\ApexRestaurant.Repository.csproj.CoreCompileInputs.cache

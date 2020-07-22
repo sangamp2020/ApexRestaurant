@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ApexRestaurant.Mvc",
+    "\\ApexRestaurant.Mvc\\Controllers",
+    "\\ApexRestaurant.Mvc\\Data",
+    "\\ApexRestaurant.Mvc\\Data\\Migrations",
+    "\\ApexRestaurant.Mvc\\Models",
+    "\\ApexRestaurant.Mvc\\Views\\Shared",
+    "\\ApexRestaurant.Mvc\\wwwroot"
+  ],
+  "SelectedNode": "\\ApexRestaurant.Mvc\\Controllers\\HomeController.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -9,3 +9,4 @@ D:\ApexRestaurant\ApexRestaurant.Services\obj\Debug\netstandard2.0\ApexRestauran
 D:\ApexRestaurant\ApexRestaurant.Services\obj\Debug\netstandard2.0\ApexRestaurant.Services.csproj.CopyComplete
 D:\ApexRestaurant\ApexRestaurant.Services\obj\Debug\netstandard2.0\ApexRestaurant.Services.dll
 D:\ApexRestaurant\ApexRestaurant.Services\obj\Debug\netstandard2.0\ApexRestaurant.Services.pdb
+D:\ApexRestaurant\ApexRestaurant.Services\obj\Debug\netstandard2.0\ApexRestaurant.Services.csproj.CoreCompileInputs.cache
