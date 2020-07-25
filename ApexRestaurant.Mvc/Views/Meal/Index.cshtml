@@ -1,4 +1,4 @@
-@model IEnumerable<ApexRestaurant.Mvc.Models.MealViewModel>
+@model IEnumerable<ApexRestaurant.Mvc.Models.Meals>
 
 @{
     Layout = null;
@@ -25,10 +25,10 @@
                 @Html.DisplayNameFor(model => model.CustomerId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date_of_Meal)
+                @Html.DisplayNameFor(model => model.DateOfMeal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cost_of_Meal)
+                @Html.DisplayNameFor(model => model.CostOfMeal)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
@@ -58,10 +58,10 @@
                 @Html.DisplayFor(modelItem => item.CustomerId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date_of_Meal)
+                @Html.DisplayFor(modelItem => item.DateOfMeal)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cost_of_Meal)
+                @Html.DisplayFor(modelItem => item.CostOfMeal)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

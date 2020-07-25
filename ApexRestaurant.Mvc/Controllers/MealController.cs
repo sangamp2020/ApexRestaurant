@@ -22,7 +22,7 @@ namespace ApexRestaurant.Mvc.Controllers
         // GET: Meal
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MealViewModel.ToListAsync());
+            return View(await _context.Meals.ToListAsync());
         }
 
         // GET: Meal/Details/5
@@ -33,14 +33,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var mealViewModel = await _context.MealViewModel
+            var meals = await _context.Meals
                 .FirstOrDefaultAsync(m => m.MealId == id);
-            if (mealViewModel == null)
+            if (meals == null)
             {
                 return NotFound();
             }
 
-            return View(mealViewModel);
+            return View(meals);
         }
 
         // GET: Meal/Create
@@ -54,15 +54,15 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MealId,StaffId,CustomerId,Date_of_Meal,Cost_of_Meal,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] MealViewModel mealViewModel)
+        public async Task<IActionResult> Create([Bind("MealId,StaffId,CustomerId,DateOfMeal,CostOfMeal,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] Meals meals)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mealViewModel);
+                _context.Add(meals);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(mealViewModel);
+            return View(meals);
         }
 
         // GET: Meal/Edit/5
@@ -73,12 +73,12 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var mealViewModel = await _context.MealViewModel.FindAsync(id);
-            if (mealViewModel == null)
+            var meals = await _context.Meals.FindAsync(id);
+            if (meals == null)
             {
                 return NotFound();
             }
-            return View(mealViewModel);
+            return View(meals);
         }
 
         // POST: Meal/Edit/5
@@ -86,9 +86,9 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MealId,StaffId,CustomerId,Date_of_Meal,Cost_of_Meal,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] MealViewModel mealViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("MealId,StaffId,CustomerId,DateOfMeal,CostOfMeal,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] Meals meals)
         {
-            if (id != mealViewModel.MealId)
+            if (id != meals.MealId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ApexRestaurant.Mvc.Controllers
             {
                 try
                 {
-                    _context.Update(mealViewModel);
+                    _context.Update(meals);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MealViewModelExists(mealViewModel.MealId))
+                    if (!MealsExists(meals.MealId))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace ApexRestaurant.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(mealViewModel);
+            return View(meals);
         }
 
         // GET: Meal/Delete/5
@@ -124,14 +124,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var mealViewModel = await _context.MealViewModel
+            var meals = await _context.Meals
                 .FirstOrDefaultAsync(m => m.MealId == id);
-            if (mealViewModel == null)
+            if (meals == null)
             {
                 return NotFound();
             }
 
-            return View(mealViewModel);
+            return View(meals);
         }
 
         // POST: Meal/Delete/5
@@ -139,15 +139,15 @@ namespace ApexRestaurant.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var mealViewModel = await _context.MealViewModel.FindAsync(id);
-            _context.MealViewModel.Remove(mealViewModel);
+            var meals = await _context.Meals.FindAsync(id);
+            _context.Meals.Remove(meals);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MealViewModelExists(int id)
+        private bool MealsExists(int id)
         {
-            return _context.MealViewModel.Any(e => e.MealId == id);
+            return _context.Meals.Any(e => e.MealId == id);
         }
     }
 }

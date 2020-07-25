@@ -22,7 +22,7 @@ namespace ApexRestaurant.Mvc.Controllers
         // GET: MenuItem
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MenuItemViewModel.ToListAsync());
+            return View(await _context.MenuItems.ToListAsync());
         }
 
         // GET: MenuItem/Details/5
@@ -33,14 +33,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var menuItemViewModel = await _context.MenuItemViewModel
+            var menuItems = await _context.MenuItems
                 .FirstOrDefaultAsync(m => m.MenuItemId == id);
-            if (menuItemViewModel == null)
+            if (menuItems == null)
             {
                 return NotFound();
             }
 
-            return View(menuItemViewModel);
+            return View(menuItems);
         }
 
         // GET: MenuItem/Create
@@ -54,15 +54,15 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MenuItemId,MenuId,Menu_Items_Name,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] MenuItemViewModel menuItemViewModel)
+        public async Task<IActionResult> Create([Bind("MenuItemId,MenuId,MenuItemsName,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] MenuItems menuItems)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(menuItemViewModel);
+                _context.Add(menuItems);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(menuItemViewModel);
+            return View(menuItems);
         }
 
         // GET: MenuItem/Edit/5
@@ -73,12 +73,12 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var menuItemViewModel = await _context.MenuItemViewModel.FindAsync(id);
-            if (menuItemViewModel == null)
+            var menuItems = await _context.MenuItems.FindAsync(id);
+            if (menuItems == null)
             {
                 return NotFound();
             }
-            return View(menuItemViewModel);
+            return View(menuItems);
         }
 
         // POST: MenuItem/Edit/5
@@ -86,9 +86,9 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MenuItemId,MenuId,Menu_Items_Name,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] MenuItemViewModel menuItemViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("MenuItemId,MenuId,MenuItemsName,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] MenuItems menuItems)
         {
-            if (id != menuItemViewModel.MenuItemId)
+            if (id != menuItems.MenuItemId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ApexRestaurant.Mvc.Controllers
             {
                 try
                 {
-                    _context.Update(menuItemViewModel);
+                    _context.Update(menuItems);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MenuItemViewModelExists(menuItemViewModel.MenuItemId))
+                    if (!MenuItemsExists(menuItems.MenuItemId))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace ApexRestaurant.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(menuItemViewModel);
+            return View(menuItems);
         }
 
         // GET: MenuItem/Delete/5
@@ -124,14 +124,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var menuItemViewModel = await _context.MenuItemViewModel
+            var menuItems = await _context.MenuItems
                 .FirstOrDefaultAsync(m => m.MenuItemId == id);
-            if (menuItemViewModel == null)
+            if (menuItems == null)
             {
                 return NotFound();
             }
 
-            return View(menuItemViewModel);
+            return View(menuItems);
         }
 
         // POST: MenuItem/Delete/5
@@ -139,15 +139,15 @@ namespace ApexRestaurant.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var menuItemViewModel = await _context.MenuItemViewModel.FindAsync(id);
-            _context.MenuItemViewModel.Remove(menuItemViewModel);
+            var menuItems = await _context.MenuItems.FindAsync(id);
+            _context.MenuItems.Remove(menuItems);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MenuItemViewModelExists(int id)
+        private bool MenuItemsExists(int id)
         {
-            return _context.MenuItemViewModel.Any(e => e.MenuItemId == id);
+            return _context.MenuItems.Any(e => e.MenuItemId == id);
         }
     }
 }

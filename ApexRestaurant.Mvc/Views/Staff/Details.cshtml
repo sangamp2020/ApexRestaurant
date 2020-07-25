@@ -1,4 +1,4 @@
-@model ApexRestaurant.Mvc.Models.StaffViewModel
+@model ApexRestaurant.Mvc.Models.Staffs
 
 @{
     Layout = null;
@@ -14,14 +14,14 @@
 <body>
 
 <div>
-    <h4>StaffViewModel</h4>
+    <h4>Staffs</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Staff_Role_Id)
+            @Html.DisplayNameFor(model => model.StaffRoleId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Staff_Role_Id)
+            @Html.DisplayFor(model => model.StaffRoleId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)

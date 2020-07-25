@@ -1,4 +1,4 @@
-@model ApexRestaurant.Mvc.Models.MenuItemViewModel
+@model ApexRestaurant.Mvc.Models.MenuItems
 
 @{
     Layout = null;
@@ -14,7 +14,7 @@
 <body>
 
 <div>
-    <h4>MenuItemViewModel</h4>
+    <h4>MenuItems</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -24,10 +24,10 @@
             @Html.DisplayFor(model => model.MenuId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Menu_Items_Name)
+            @Html.DisplayNameFor(model => model.MenuItemsName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Menu_Items_Name)
+            @Html.DisplayFor(model => model.MenuItemsName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IsActive)

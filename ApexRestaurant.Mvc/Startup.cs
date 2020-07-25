@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace ApexRestaurant.Mvc
 {
     public class Startup
@@ -23,23 +24,20 @@ namespace ApexRestaurant.Mvc
         }
 
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => {
+            options.UseSqlServer("Server = DESKTOP-L0CP8VR\\SQLEXPRESS; Database = ApexRestaurantDB; Trusted_Connection = True;");
+        });
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            
+            services.AddCors(allowsites=>{
+                allowsites.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
             services.AddRazorPages();
-
-            services.AddHttpClient();
-        //    services.AddHttpClient("API Client", client => {
-        //         client.BaseAddress = new Uri("https://www.metaweather.com/");
-        //         client.DefaultRequestHeaders.Add("Accept", "application/json");
-        //     });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,11 +56,11 @@ namespace ApexRestaurant.Mvc
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            
+           app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -74,3 +72,4 @@ namespace ApexRestaurant.Mvc
         }
     }
 }
+

@@ -22,7 +22,7 @@ namespace ApexRestaurant.Mvc.Controllers
         // GET: StaffRole
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StaffRoleViewModel.ToListAsync());
+            return View(await _context.StaffRoles.ToListAsync());
         }
 
         // GET: StaffRole/Details/5
@@ -33,14 +33,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var staffRoleViewModel = await _context.StaffRoleViewModel
-                .FirstOrDefaultAsync(m => m.Staff_Roles_Id == id);
-            if (staffRoleViewModel == null)
+            var staffRoles = await _context.StaffRoles
+                .FirstOrDefaultAsync(m => m.StaffRolesId == id);
+            if (staffRoles == null)
             {
                 return NotFound();
             }
 
-            return View(staffRoleViewModel);
+            return View(staffRoles);
         }
 
         // GET: StaffRole/Create
@@ -54,15 +54,15 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Staff_Roles_Id,Staff_Roles_Description,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] StaffRoleViewModel staffRoleViewModel)
+        public async Task<IActionResult> Create([Bind("StaffRolesId,StaffRolesDescription,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] StaffRoles staffRoles)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(staffRoleViewModel);
+                _context.Add(staffRoles);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(staffRoleViewModel);
+            return View(staffRoles);
         }
 
         // GET: StaffRole/Edit/5
@@ -73,12 +73,12 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var staffRoleViewModel = await _context.StaffRoleViewModel.FindAsync(id);
-            if (staffRoleViewModel == null)
+            var staffRoles = await _context.StaffRoles.FindAsync(id);
+            if (staffRoles == null)
             {
                 return NotFound();
             }
-            return View(staffRoleViewModel);
+            return View(staffRoles);
         }
 
         // POST: StaffRole/Edit/5
@@ -86,9 +86,9 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Staff_Roles_Id,Staff_Roles_Description,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] StaffRoleViewModel staffRoleViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffRolesId,StaffRolesDescription,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] StaffRoles staffRoles)
         {
-            if (id != staffRoleViewModel.Staff_Roles_Id)
+            if (id != staffRoles.StaffRolesId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ApexRestaurant.Mvc.Controllers
             {
                 try
                 {
-                    _context.Update(staffRoleViewModel);
+                    _context.Update(staffRoles);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StaffRoleViewModelExists(staffRoleViewModel.Staff_Roles_Id))
+                    if (!StaffRolesExists(staffRoles.StaffRolesId))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace ApexRestaurant.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(staffRoleViewModel);
+            return View(staffRoles);
         }
 
         // GET: StaffRole/Delete/5
@@ -124,14 +124,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var staffRoleViewModel = await _context.StaffRoleViewModel
-                .FirstOrDefaultAsync(m => m.Staff_Roles_Id == id);
-            if (staffRoleViewModel == null)
+            var staffRoles = await _context.StaffRoles
+                .FirstOrDefaultAsync(m => m.StaffRolesId == id);
+            if (staffRoles == null)
             {
                 return NotFound();
             }
 
-            return View(staffRoleViewModel);
+            return View(staffRoles);
         }
 
         // POST: StaffRole/Delete/5
@@ -139,15 +139,15 @@ namespace ApexRestaurant.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var staffRoleViewModel = await _context.StaffRoleViewModel.FindAsync(id);
-            _context.StaffRoleViewModel.Remove(staffRoleViewModel);
+            var staffRoles = await _context.StaffRoles.FindAsync(id);
+            _context.StaffRoles.Remove(staffRoles);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StaffRoleViewModelExists(int id)
+        private bool StaffRolesExists(int id)
         {
-            return _context.StaffRoleViewModel.Any(e => e.Staff_Roles_Id == id);
+            return _context.StaffRoles.Any(e => e.StaffRolesId == id);
         }
     }
 }

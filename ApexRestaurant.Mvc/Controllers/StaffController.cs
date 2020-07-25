@@ -22,7 +22,7 @@ namespace ApexRestaurant.Mvc.Controllers
         // GET: Staff
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StaffViewModel.ToListAsync());
+            return View(await _context.Staffs.ToListAsync());
         }
 
         // GET: Staff/Details/5
@@ -33,14 +33,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var staffViewModel = await _context.StaffViewModel
+            var staffs = await _context.Staffs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (staffViewModel == null)
+            if (staffs == null)
             {
                 return NotFound();
             }
 
-            return View(staffViewModel);
+            return View(staffs);
         }
 
         // GET: Staff/Create
@@ -54,15 +54,15 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Staff_Role_Id,FirstName,LastName,Address,PhoneRes,PhoneMob,EnrollDate,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] StaffViewModel staffViewModel)
+        public async Task<IActionResult> Create([Bind("Id,StaffRoleId,FirstName,LastName,Address,PhoneRes,PhoneMob,EnrollDate,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] Staffs staffs)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(staffViewModel);
+                _context.Add(staffs);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(staffViewModel);
+            return View(staffs);
         }
 
         // GET: Staff/Edit/5
@@ -73,12 +73,12 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var staffViewModel = await _context.StaffViewModel.FindAsync(id);
-            if (staffViewModel == null)
+            var staffs = await _context.Staffs.FindAsync(id);
+            if (staffs == null)
             {
                 return NotFound();
             }
-            return View(staffViewModel);
+            return View(staffs);
         }
 
         // POST: Staff/Edit/5
@@ -86,9 +86,9 @@ namespace ApexRestaurant.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Staff_Role_Id,FirstName,LastName,Address,PhoneRes,PhoneMob,EnrollDate,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] StaffViewModel staffViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,StaffRoleId,FirstName,LastName,Address,PhoneRes,PhoneMob,EnrollDate,IsActive,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn")] Staffs staffs)
         {
-            if (id != staffViewModel.Id)
+            if (id != staffs.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ApexRestaurant.Mvc.Controllers
             {
                 try
                 {
-                    _context.Update(staffViewModel);
+                    _context.Update(staffs);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StaffViewModelExists(staffViewModel.Id))
+                    if (!StaffsExists(staffs.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace ApexRestaurant.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(staffViewModel);
+            return View(staffs);
         }
 
         // GET: Staff/Delete/5
@@ -124,14 +124,14 @@ namespace ApexRestaurant.Mvc.Controllers
                 return NotFound();
             }
 
-            var staffViewModel = await _context.StaffViewModel
+            var staffs = await _context.Staffs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (staffViewModel == null)
+            if (staffs == null)
             {
                 return NotFound();
             }
 
-            return View(staffViewModel);
+            return View(staffs);
         }
 
         // POST: Staff/Delete/5
@@ -139,15 +139,15 @@ namespace ApexRestaurant.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var staffViewModel = await _context.StaffViewModel.FindAsync(id);
-            _context.StaffViewModel.Remove(staffViewModel);
+            var staffs = await _context.Staffs.FindAsync(id);
+            _context.Staffs.Remove(staffs);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StaffViewModelExists(int id)
+        private bool StaffsExists(int id)
         {
-            return _context.StaffViewModel.Any(e => e.Id == id);
+            return _context.Staffs.Any(e => e.Id == id);
         }
     }
 }

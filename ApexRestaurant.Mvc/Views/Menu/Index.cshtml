@@ -1,4 +1,4 @@
-@model IEnumerable<ApexRestaurant.Mvc.Models.MenuViewModel>
+@model IEnumerable<ApexRestaurant.Mvc.Models.Menus>
 
 @{
     Layout = null;
@@ -19,13 +19,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Menu_Name)
+                @Html.DisplayNameFor(model => model.MenuName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Available_Date_From)
+                @Html.DisplayNameFor(model => model.AvailableDateFrom)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Available_Date_To)
+                @Html.DisplayNameFor(model => model.AvailableDateTo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
@@ -49,13 +49,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Menu_Name)
+                @Html.DisplayFor(modelItem => item.MenuName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Available_Date_From)
+                @Html.DisplayFor(modelItem => item.AvailableDateFrom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Available_Date_To)
+                @Html.DisplayFor(modelItem => item.AvailableDateTo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

@@ -1,4 +1,4 @@
-@model ApexRestaurant.Mvc.Models.MenuViewModel
+@model ApexRestaurant.Mvc.Models.Menus
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h4>MenuViewModel</h4>
+<h4>Menus</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,24 +21,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Menu_Name" class="control-label"></label>
-                <input asp-for="Menu_Name" class="form-control" />
-                <span asp-validation-for="Menu_Name" class="text-danger"></span>
+                <label asp-for="MenuName" class="control-label"></label>
+                <input asp-for="MenuName" class="form-control" />
+                <span asp-validation-for="MenuName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Available_Date_From" class="control-label"></label>
-                <input asp-for="Available_Date_From" class="form-control" />
-                <span asp-validation-for="Available_Date_From" class="text-danger"></span>
+                <label asp-for="AvailableDateFrom" class="control-label"></label>
+                <input asp-for="AvailableDateFrom" class="form-control" />
+                <span asp-validation-for="AvailableDateFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Available_Date_To" class="control-label"></label>
-                <input asp-for="Available_Date_To" class="form-control" />
-                <span asp-validation-for="Available_Date_To" class="text-danger"></span>
+                <label asp-for="AvailableDateTo" class="control-label"></label>
+                <input asp-for="AvailableDateTo" class="form-control" />
+                <span asp-validation-for="AvailableDateTo" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                <input asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreatedBy" class="control-label"></label>

@@ -1,4 +1,4 @@
-@model IEnumerable<ApexRestaurant.Mvc.Models.MenuItemViewModel>
+@model IEnumerable<ApexRestaurant.Mvc.Models.MenuItems>
 
 @{
     Layout = null;
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.MenuId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Menu_Items_Name)
+                @Html.DisplayNameFor(model => model.MenuItemsName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.MenuId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Menu_Items_Name)
+                @Html.DisplayFor(modelItem => item.MenuItemsName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

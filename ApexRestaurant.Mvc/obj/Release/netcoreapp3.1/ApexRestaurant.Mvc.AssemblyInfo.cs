@@ -12,7 +12,7 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-ApexRestaurant.Mvc-C5291241-EE3D-4FFE-A47D-ADB02A8A1DE9")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-ApexRestaurant.Mvc-5AB3578B-ED21-41BC-8AF8-661648008149")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApexRestaurant.Mvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

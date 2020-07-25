@@ -1,4 +1,4 @@
-@model IEnumerable<ApexRestaurant.Mvc.Models.StaffViewModel>
+@model IEnumerable<ApexRestaurant.Mvc.Models.Staffs>
 
 @{
     Layout = null;
@@ -19,7 +19,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Staff_Role_Id)
+                @Html.DisplayNameFor(model => model.StaffRoleId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -61,7 +61,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Staff_Role_Id)
+                @Html.DisplayFor(modelItem => item.StaffRoleId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

@@ -16,266 +16,302 @@ namespace ApexRestaurant.Mvc.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.CustomerViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.Customers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(500);
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<DateTime>("EnrollDate")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("EnrollDate")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasMaxLength(100);
+                        .HasMaxLength(200);
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<string>("PhoneMob")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PhoneRes")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomerViewModel");
+                    b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.MealDishViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.MealDishes", b =>
                 {
                     b.Property<int>("MealDishesId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MealId")
+                    b.Property<int?>("MealId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MenuItemId")
+                    b.Property<int?>("MenuItemId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Quantity")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(60);
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("MealDishesId");
 
-                    b.ToTable("MealDishViewModel");
+                    b.ToTable("MealDishes");
                 });
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.MealViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.Meals", b =>
                 {
                     b.Property<int>("MealId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Cost_of_Meal")
-                        .HasColumnType("TEXT");
+                    b.Property<string>("CostOfMeal")
+                        .HasColumnName("Cost_of_Meal")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Date_of_Meal")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("DateOfMeal")
+                        .HasColumnName("Date_of_Meal")
+                        .HasColumnType("datetime");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StaffId")
+                    b.Property<int?>("StaffId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("MealId");
 
-                    b.ToTable("MealViewModel");
+                    b.ToTable("Meals");
                 });
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.MenuItemViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.MenuItems", b =>
                 {
                     b.Property<int>("MenuItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MenuId")
+                    b.Property<int?>("MenuId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Menu_Items_Name")
-                        .HasColumnType("TEXT");
+                    b.Property<string>("MenuItemsName")
+                        .HasColumnName("Menu_Items_Name")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("MenuItemId");
 
-                    b.ToTable("MenuItemViewModel");
+                    b.ToTable("MenuItems");
                 });
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.MenuViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.Menus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Available_Date_From")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("AvailableDateFrom")
+                        .HasColumnName("Available_Date_From")
+                        .HasColumnType("datetime");
 
-                    b.Property<DateTime>("Available_Date_To")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("AvailableDateTo")
+                        .HasColumnName("Available_Date_To")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Menu_Name")
-                        .HasColumnType("TEXT");
+                    b.Property<string>("MenuName")
+                        .HasColumnName("Menu_Name")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MenuViewModel");
+                    b.ToTable("Menus");
                 });
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.StaffRoleViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.StaffRoles", b =>
                 {
-                    b.Property<int>("Staff_Roles_Id")
+                    b.Property<int>("StaffRolesId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Staff_Roles_Id")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Staff_Roles_Description")
-                        .HasColumnType("TEXT");
+                    b.Property<string>("StaffRolesDescription")
+                        .HasColumnName("Staff_Roles_Description")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
-                    b.HasKey("Staff_Roles_Id");
+                    b.HasKey("StaffRolesId");
 
-                    b.ToTable("StaffRoleViewModel");
+                    b.ToTable("StaffRoles");
                 });
 
-            modelBuilder.Entity("ApexRestaurant.Mvc.Models.StaffViewModel", b =>
+            modelBuilder.Entity("ApexRestaurant.Mvc.Models.Staffs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(500);
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime");
 
-                    b.Property<DateTime>("EnrollDate")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("EnrollDate")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool?>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<string>("PhoneMob")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PhoneRes")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
 
-                    b.Property<int>("Staff_Role_Id")
+                    b.Property<int?>("StaffRoleId")
+                        .HasColumnName("Staff_Role_Id")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("TEXT");
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaffViewModel");
+                    b.ToTable("Staffs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
